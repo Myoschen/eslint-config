@@ -1,3 +1,1 @@
-const { typescript } = require("./typescript");
-
-module.exports = typescript;
+module.exports = require("./src/typescript");
