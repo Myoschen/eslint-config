@@ -1,51 +1,58 @@
 {
   "name": "@myoschen/eslint-config",
-  "version": "0.0.5",
-  "description": "My personal eslint configurations.",
-  "main": "index.js",
-  "exports": {
-    ".": "./index.js",
-    "./base": "./src/base.js",
-    "./react-ts": "./src/react-ts.js",
-    "./react": "./src/react.js",
-    "./tailwindcss": "./src/tailwindcss.js",
-    "./typescript": "./src/typescript.js"
-  },
-  "scripts": {
-    "link": "npm link",
-    "publish-manual": "npm publish"
-  },
-  "keywords": [
-    "eslint",
-    "eslint-config"
-  ],
-  "author": "Myoschen",
+  "version": "1.0.0",
+  "description": "My eslint configurations.",
   "license": "MIT",
+  "author": "Myoschen <myos.chen@gmail.com> (https://github.com/Myoschen/)",
+  "keywords": ["eslint", "eslint-config"],
+  "homepage": "https://github.com/Myoschen/eslint-config#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/Myoschen/eslint-config.git"
   },
-  "homepage": "https://github.com/Myoschen/eslint-config",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": ["dist"],
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsup src/index.ts",
+    "lint": "eslint --quiet",
+    "lint:fix": "eslint --fix --quiet"
+  },
+  "dependencies": {
+    "@eslint-react/eslint-plugin": "^1.19.0",
+    "@next/eslint-plugin-next": "^15.1.0",
+    "@stylistic/eslint-plugin": "^2.12.1",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "eslint": "^9.17.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-tailwindcss": "^3.17.3",
+    "globals": "^15.13.0"
+  },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.1.0",
-    "@typescript-eslint/parser": "^6.1.0",
-    "eslint": "^8.45.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-import-resolver-typescript": "^3.5.5",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.33.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-tailwindcss": "^3.13.0",
-    "prettier": "^3.0.0"
+    "@types/eslint-plugin-jsx-a11y": "^6.10.0",
+    "@types/eslint-plugin-tailwindcss": "^3.17.0",
+    "@types/node": "^22.10.2",
+    "jiti": "^2.4.1",
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
   },
   "peerDependencies": {
-    "eslint": ">= 8",
-    "prettier": ">= 3"
+    "eslint": ">= 9"
   }
 }

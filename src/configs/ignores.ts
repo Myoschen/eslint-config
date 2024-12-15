@@ -1,0 +1,7 @@
+import type { Linter } from 'eslint'
+
+export function ignores(): Linter.Config[] {
+  return [{
+    ignores: ['**/node_modules/*', '**/.next/*', '**/out/*', '**/.expo/*', '**/dist/*'],
+  }]
+}
