@@ -20,11 +20,11 @@ export function react(): Linter.Config[] {
       sourceType: 'module',
     },
     plugins: {
-      'react': plugins['@eslint-react'] as any,
-      'react-dom': plugins['@eslint-react/dom'] as any,
+      '@eslint-react': plugins['@eslint-react'] as any,
+      '@eslint-react/dom': plugins['@eslint-react/dom'] as any,
+      '@eslint-react/hooks-extra': plugins['@eslint-react/hooks-extra'] as any,
+      '@eslint-react/naming-convention': plugins['@eslint-react/naming-convention'] as any,
       'react-hooks': pluginReactHooks,
-      'react-hooks-extra': plugins['@eslint-react/hooks-extra'] as any,
-      'react-naming-convention': plugins['@eslint-react/naming-convention'] as any,
       'jsx-a11y': pluginJsxA11y,
     },
     rules: {
@@ -32,12 +32,12 @@ export function react(): Linter.Config[] {
       ...pluginReactHooks.configs['recommended'].rules,
       ...pluginJsxA11y.configs.strict.rules,
 
-      'react/no-complicated-conditional-rendering': 'error',
-      'react/no-leaked-conditional-rendering': 'error',
-      'react/avoid-shorthand-fragment': 'off',
-      'react/prefer-destructuring-assignment': 'off',
+      '@eslint-react/no-complicated-conditional-rendering': 'error',
+      '@eslint-react/no-leaked-conditional-rendering': 'error',
+      '@eslint-react/avoid-shorthand-fragment': 'off',
+      '@eslint-react/prefer-destructuring-assignment': 'off',
 
-      'react-naming-convention/filename': [
+      '@eslint-react/naming-convention/filename': [
         'error',
         { rule: 'kebab-case' },
       ],
