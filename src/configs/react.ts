@@ -20,10 +20,7 @@ export function react(): Linter.Config[] {
       sourceType: 'module',
     },
     plugins: {
-      '@eslint-react': plugins['@eslint-react'] as any,
-      '@eslint-react/dom': plugins['@eslint-react/dom'] as any,
-      '@eslint-react/hooks-extra': plugins['@eslint-react/hooks-extra'] as any,
-      '@eslint-react/naming-convention': plugins['@eslint-react/naming-convention'] as any,
+      ...plugins as any,
       'react-hooks': pluginReactHooks,
       'jsx-a11y': pluginJsxA11y,
     },
