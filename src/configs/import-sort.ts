@@ -14,10 +14,25 @@ export function importSort(): Linter.Config[] {
         {
           groups: [
             [String.raw`^\u0000`],
-            [String.raw`^node`, String.raw`^react$`, String.raw`^react-native$`, String.raw`^react-native.*`, String.raw`^expo$`, String.raw`^expo.*`, String.raw`^next`, String.raw`@?\w`],
-            [String.raw`^~/.*`, String.raw`^@/.*`],
-            [String.raw`^\.\.(?!/?$)`, String.raw`^\.\./?$`],
-            [String.raw`^\./(?=.*/)(?!/?$)`, String.raw`^\.(?!/?$)`, String.raw`^\./?$`],
+            [
+              String.raw`^node`,
+              String.raw`^react$`,
+              // react native
+              String.raw`^react-native$`,
+              String.raw`^react-native.*`,
+              // expo
+              String.raw`^expo$`,
+              String.raw`^expo.*`,
+              // next
+              String.raw`^next`,
+              // other packages
+              String.raw`@?\w`,
+            ],
+            [
+              String.raw`^\.(?!/?$)`,
+              String.raw`^~/.*`,
+              String.raw`^@/.*`,
+            ],
           ],
         },
       ],
