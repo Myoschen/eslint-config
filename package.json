@@ -1,17 +1,16 @@
 {
   "name": "@myoschen/eslint-config",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "My eslint configurations.",
   "license": "MIT",
   "author": "Myoschen <myos.chen@gmail.com> (https://github.com/Myoschen/)",
   "keywords": [
-    "eslint",
     "eslint-config"
   ],
   "homepage": "https://github.com/Myoschen/eslint-config#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Myoschen/eslint-config.git"
+    "url": "git+https://github.com/Myoschen/eslint-config.git"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
