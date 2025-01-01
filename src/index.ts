@@ -1,40 +1,44 @@
-import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
+/* eslint-disable import-sort/imports */
 import type { Linter } from 'eslint'
 
-import { ignores } from './configs/ignores'
-import { importSort } from './configs/import-sort'
+import { ignores, type IgnoresOptions } from './configs/ignores'
+import { importSort, type ImportSortOptions } from './configs/import-sort'
 import { javascript } from './configs/javascript'
-import { next } from './configs/next'
-import { react } from './configs/react'
-import { stylistic } from './configs/stylistic'
+import { next, type NextOptions } from './configs/next'
+import { react, type ReactOptions } from './configs/react'
+import { stylistic, type StylisticOptions } from './configs/stylistic'
 import { tailwindcss, type TailwindCSSOptions } from './configs/tailwindcss'
 import { typescript, type TypeScriptOptions } from './configs/typescript'
 
 type Options = {
-  stylistic?: boolean | StylisticCustomizeOptions<true>
+  stylistic?: boolean | StylisticOptions
   typescript?: boolean | TypeScriptOptions
+  react?: boolean | ReactOptions
+  next?: boolean | NextOptions
   tailwindcss?: boolean | TailwindCSSOptions
-  react?: boolean
-  next?: boolean
+  ignores?: IgnoresOptions
+  importSort?: ImportSortOptions
 }
 
 type UserConfigs = Linter.Config[]
 
-export function myoschen(options?: Options, ...userConfigs: UserConfigs): Linter.Config[] {
+export function myoschen(options: Options = {}, ...userConfigs: UserConfigs): Linter.Config[] {
   const {
     stylistic: enableStylistic,
     typescript: enableTypeScript,
     react: enableReact,
     next: enableNext,
     tailwindcss: enableTailwindCSS,
-  } = options ?? {}
+    ignores: ignoresOptions,
+    importSort: importSortOptions,
+  } = options
 
   const configs: Linter.Config[] = []
 
   configs.push(
-    ...ignores(),
+    ...ignores(ignoresOptions),
+    ...importSort(importSortOptions),
     ...javascript(),
-    ...importSort(),
   )
 
   if (enableStylistic) {

@@ -4,7 +4,11 @@ import pluginJsxA11y from 'eslint-plugin-jsx-a11y'
 // @ts-expect-error there are no types
 import pluginReactHooks from 'eslint-plugin-react-hooks'
 
-export function react(): Linter.Config[] {
+import type { ConfigOptions } from '@/types'
+
+export type ReactOptions = ConfigOptions & {}
+
+export function react(options: ReactOptions = {}): Linter.Config[] {
   const plugins = pluginReact.configs.all.plugins
 
   return [{
@@ -92,6 +96,9 @@ export function react(): Linter.Config[] {
       'react-naming-convention/component-name': ['error', 'PascalCase'],
       'react-naming-convention/filename': ['error', 'kebab-case'],
       'react-naming-convention/filename-extension': ['error', 'as-needed'],
+
+      // override rules
+      ...options.overrides,
     },
   }]
 }

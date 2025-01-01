@@ -1,7 +1,11 @@
 import type { Linter } from 'eslint'
 import pluginImportSort from 'eslint-plugin-simple-import-sort'
 
-export function importSort(): Linter.Config[] {
+import type { ConfigOptions } from '@/types'
+
+export type ImportSortOptions = ConfigOptions & {}
+
+export function importSort(options: ImportSortOptions = {}): Linter.Config[] {
   return [{
     name: 'myoschen/import-sort',
     plugins: {
@@ -36,6 +40,9 @@ export function importSort(): Linter.Config[] {
           ],
         },
       ],
+
+      // override rules
+      ...options.overrides,
     },
   }]
 }

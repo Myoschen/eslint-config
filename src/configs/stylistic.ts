@@ -1,6 +1,8 @@
 import pluginStylistic, { type StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import type { Linter } from 'eslint'
 
+import type { ConfigOptions } from '@/types'
+
 const stylisticConfigDefaults: StylisticCustomizeOptions<true> = {
   flat: true,
   indent: 2,
@@ -10,10 +12,14 @@ const stylisticConfigDefaults: StylisticCustomizeOptions<true> = {
   braceStyle: '1tbs',
 }
 
-export function stylistic(options: StylisticCustomizeOptions<true> = {}): Linter.Config[] {
+export type StylisticOptions = ConfigOptions & StylisticCustomizeOptions<true>
+
+export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
+  const { overrides, ...stylisticOptions } = options
+
   const config = pluginStylistic.configs.customize({
     ...stylisticConfigDefaults,
-    ...options,
+    ...stylisticOptions,
   })
 
   return [{
@@ -23,6 +29,9 @@ export function stylistic(options: StylisticCustomizeOptions<true> = {}): Linter
     },
     rules: {
       ...config.rules,
+
+      // override rules
+      ...overrides,
     },
   }]
 }

@@ -1,28 +1,36 @@
 import type { Linter } from 'eslint'
 import pluginTailwind, {} from 'eslint-plugin-tailwindcss'
 
-export type TailwindCSSOptions = {
+import type { ConfigOptions } from '@/types'
+
+export type TailwindCSSOptions = ConfigOptions & {
   callees?: string[]
   config?: string
 }
 
 export function tailwindcss(options: TailwindCSSOptions = {}): Linter.Config[] {
+  const { overrides, ...tailwindcssOptions } = options
+
   return [{
     name: 'myoschen/tailwindcss',
     plugins: {
       tailwindcss: pluginTailwind,
     },
-    rules: {
-      ...pluginTailwind.configs.recommended.rules,
-
-      'tailwindcss/no-custom-classname': 'off',
-    },
     settings: {
       tailwindcss: {
         callees: ['cn', 'cva'],
         config: 'tailwind.config.ts',
-        ...options,
+        ...tailwindcssOptions,
       },
+    },
+    rules: {
+      ...pluginTailwind.configs.recommended.rules,
+
+      // custom rules
+      'tailwindcss/no-custom-classname': 'off',
+
+      // override rules
+      ...overrides,
     },
   }]
 }

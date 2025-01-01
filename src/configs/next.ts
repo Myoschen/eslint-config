@@ -2,7 +2,11 @@
 import pluginNext from '@next/eslint-plugin-next'
 import type { Linter } from 'eslint'
 
-export function next(): Linter.Config[] {
+import type { ConfigOptions } from '@/types'
+
+export type NextOptions = ConfigOptions & {}
+
+export function next(options: NextOptions = {}): Linter.Config[] {
   return [{
     name: 'myoschen/next',
     plugins: {
@@ -11,6 +15,9 @@ export function next(): Linter.Config[] {
     rules: {
       ...pluginNext.configs['recommended'].rules,
       ...pluginNext.configs['core-web-vitals'].rules,
+
+      // override rules
+      ...options.overrides,
     },
   }]
 }

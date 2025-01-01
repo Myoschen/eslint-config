@@ -1,7 +1,11 @@
 import type { Linter } from 'eslint'
 
-export function ignores(): Linter.Config[] {
+export type IgnoresOptions = {
+  ignores?: string[]
+}
+
+export function ignores(options: IgnoresOptions = {}): Linter.Config[] {
   return [{
-    ignores: ['**/node_modules/*', '**/.next/*', '**/out/*', '**/.expo/*', '**/dist/*'],
+    ignores: ['**/node_modules/*', ...(options.ignores ?? [])],
   }]
 }
