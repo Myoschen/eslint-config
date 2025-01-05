@@ -52,11 +52,13 @@ export function myoschen(options: Options = {}, ...userConfigs: UserConfigs): Li
   }
 
   if (enableReact) {
-    configs.push(...react())
+    const options = typeof enableReact === 'boolean' ? {} : enableReact
+    configs.push(...react(options))
   }
 
   if (enableNext) {
-    configs.push(...next())
+    const options = typeof enableNext === 'boolean' ? {} : enableNext
+    configs.push(...next(options))
   }
 
   if (enableTailwindCSS) {
