@@ -18,9 +18,24 @@ bun add @myoschen/eslint-config -D
 
 ```js
 // eslint.config.js
-import myoschen from '@myoschen/eslint-config'
+import { myoschen } from '@myoschen/eslint-config'
 
-export default myoschen()
+// react
+export default myoschen({
+  stylistic: true,
+  typescript: true,
+  react: true,
+  tailwindcss: true,
+})
+
+// next.js
+export default myoschen({
+  stylistic: true,
+  typescript: true,
+  react: true,
+  next: true,
+  tailwindcss: true,
+})
 ```
 
 ## Contributions
