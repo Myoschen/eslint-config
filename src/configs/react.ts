@@ -93,9 +93,9 @@ export function react(options: ReactOptions = {}): Linter.Config[] {
       'react-hooks-extra/prefer-use-state-lazy-initialization': 'warn',
 
       // custom rules for react-naming-convention
-      'react-naming-convention/component-name': ['error', 'PascalCase'],
-      'react-naming-convention/filename': ['error', 'kebab-case'],
-      'react-naming-convention/filename-extension': ['error', 'as-needed'],
+      // 'react-naming-convention/component-name': ['error', 'PascalCase'],
+      // 'react-naming-convention/filename': ['error', 'kebab-case'],
+      // 'react-naming-convention/filename-extension': ['error', 'as-needed'],
 
       // override rules
       ...options.overrides,
