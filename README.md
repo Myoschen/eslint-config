@@ -38,6 +38,20 @@ export default myoschen({
 })
 ```
 
+```json
+{
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "never"
+  },
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+  ]
+}
+```
+
 ## Contributions
 
 If you have any suggestions or would like to contribute to this blog, please open an issue or submit a pull request. Your contributions are welcome!
