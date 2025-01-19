@@ -1,4 +1,3 @@
-/* eslint-disable import-sort/imports */
 import type { Linter } from 'eslint'
 
 import { ignores, type IgnoresOptions } from './configs/ignores'

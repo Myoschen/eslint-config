@@ -19,7 +19,9 @@ export function importSort(options: ImportSortOptions = {}): Linter.Config[] {
           groups: [
             [String.raw`^\u0000`],
             [
+              // node
               String.raw`^node`,
+              // react
               String.raw`^react$`,
               // react native
               String.raw`^react-native$`,
@@ -33,8 +35,11 @@ export function importSort(options: ImportSortOptions = {}): Linter.Config[] {
               String.raw`@?\w`,
             ],
             [
-              String.raw`^\.(?!/?$)`,
+              // [.] [./] [./foo] [./foo/bar]
+              String.raw`^.(/.*)?$`,
+              // [~/] [~/public]
               String.raw`^~/.*`,
+              // [@/] [@/components]
               String.raw`^@/.*`,
             ],
           ],
