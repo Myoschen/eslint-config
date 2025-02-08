@@ -1,6 +1,6 @@
 import pluginTs from '@typescript-eslint/eslint-plugin'
 import parserTs from '@typescript-eslint/parser'
-import type { Linter } from 'eslint'
+import type { ESLint, Linter } from 'eslint'
 
 import type { ConfigOptions } from '@/types'
 
@@ -24,8 +24,7 @@ export function typescript(options: TypeScriptOptions = {}): Linter.Config[] {
       },
     },
     plugins: {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      '@typescript-eslint': pluginTs as any,
+      '@typescript-eslint': pluginTs as unknown as ESLint.Plugin,
     },
     rules: {
       ...pluginTs.configs['eslint-recommended']!.overrides![0].rules,

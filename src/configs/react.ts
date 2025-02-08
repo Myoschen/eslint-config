@@ -28,7 +28,7 @@ export function react(options: ReactOptions = {}): Linter.Config[] {
       'react-hooks-extra': plugins['@eslint-react/hooks-extra'] as unknown as ESLint.Plugin,
       'react-naming-convention': plugins['@eslint-react/naming-convention'] as unknown as ESLint.Plugin,
       'react-hooks': pluginReactHooks,
-      'jsx-a11y': pluginJsxA11y,
+      'jsx-a11y': pluginJsxA11y as unknown as ESLint.Plugin,
     },
     rules: {
       ...pluginReactHooks.configs['recommended'].rules,
@@ -91,11 +91,6 @@ export function react(options: ReactOptions = {}): Linter.Config[] {
       'react-hooks-extra/no-direct-set-state-in-use-effect': 'warn',
       'react-hooks-extra/no-useless-custom-hooks': 'warn',
       'react-hooks-extra/prefer-use-state-lazy-initialization': 'warn',
-
-      // custom rules for react-naming-convention
-      // 'react-naming-convention/component-name': ['error', 'PascalCase'],
-      // 'react-naming-convention/filename': ['error', 'kebab-case'],
-      // 'react-naming-convention/filename-extension': ['error', 'as-needed'],
 
       // override rules
       ...options.overrides,

@@ -1,4 +1,4 @@
-import type { Linter } from 'eslint'
+import type { ESLint, Linter } from 'eslint'
 import pluginTailwind, {} from 'eslint-plugin-tailwindcss'
 
 import type { ConfigOptions } from '@/types'
@@ -14,7 +14,7 @@ export function tailwindcss(options: TailwindCSSOptions = {}): Linter.Config[] {
   return [{
     name: 'myoschen/tailwindcss',
     plugins: {
-      tailwindcss: pluginTailwind,
+      tailwindcss: pluginTailwind as unknown as ESLint.Plugin,
     },
     settings: {
       tailwindcss: {
