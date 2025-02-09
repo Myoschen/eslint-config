@@ -29,6 +29,7 @@
     "build": "tsup src/index.ts",
     "lint": "eslint --quiet",
     "lint:fix": "eslint --fix --quiet",
+    "publish": "bumpp && pnpm publish",
     "prepublishOnly": "nr build"
   },
   "dependencies": {
@@ -48,6 +49,7 @@
     "@types/eslint-plugin-jsx-a11y": "^6.10.0",
     "@types/eslint-plugin-tailwindcss": "^3.17.0",
     "@types/node": "^22.13.1",
+    "bumpp": "^10.0.2",
     "jiti": "^2.4.2",
     "tsup": "^8.3.6",
     "tsx": "^4.19.2",
