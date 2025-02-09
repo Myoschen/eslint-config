@@ -29,7 +29,7 @@
     "build": "tsup src/index.ts",
     "lint": "eslint --quiet",
     "lint:fix": "eslint --fix --quiet",
-    "publish": "bumpp && pnpm publish",
+    "release": "bumpp && pnpm publish",
     "prepublishOnly": "nr build"
   },
   "dependencies": {
