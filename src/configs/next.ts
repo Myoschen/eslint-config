@@ -1,23 +1,17 @@
-// @ts-expect-error there are no types
 import pluginNext from '@next/eslint-plugin-next'
-import type { Linter } from 'eslint'
+import type { ESLint, Linter } from 'eslint'
 
-import type { ConfigOptions } from '@/types'
-
-export type NextOptions = ConfigOptions & {}
-
-export function next(options: NextOptions = {}): Linter.Config[] {
-  return [{
-    name: 'myoschen/next',
-    plugins: {
-      '@next/next': pluginNext,
+export function next(): Linter.Config[] {
+  return [
+    {
+      name: 'myoschen/next',
+      plugins: {
+        '@next/next': pluginNext as unknown as ESLint.Plugin,
+      },
+      rules: {
+        ...(pluginNext.configs['recommended'].rules as Linter.RulesRecord),
+        ...(pluginNext.configs['core-web-vitals'].rules as Linter.RulesRecord),
+      },
     },
-    rules: {
-      ...pluginNext.configs['recommended'].rules,
-      ...pluginNext.configs['core-web-vitals'].rules,
-
-      // override rules
-      ...options.overrides,
-    },
-  }]
+  ]
 }

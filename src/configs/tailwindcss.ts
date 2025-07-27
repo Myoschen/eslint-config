@@ -1,36 +1,25 @@
 import type { ESLint, Linter } from 'eslint'
-import pluginTailwind, {} from 'eslint-plugin-tailwindcss'
+import pluginTailwind from 'eslint-plugin-tailwindcss'
 
-import type { ConfigOptions } from '@/types'
+export function tailwindcss(): Linter.Config[] {
+  return [
+    {
+      name: 'myoschen/tailwindcss',
+      plugins: {
+        tailwindcss: pluginTailwind as unknown as ESLint.Plugin,
+      },
+      settings: {
+        tailwindcss: {
+          callees: ['cn', 'cva'],
+          config: 'tailwind.config.ts',
+        },
+      },
+      rules: {
+        ...pluginTailwind.configs.recommended.rules,
 
-export type TailwindCSSOptions = ConfigOptions & {
-  callees?: string[]
-  config?: string
-}
-
-export function tailwindcss(options: TailwindCSSOptions = {}): Linter.Config[] {
-  const { overrides, ...tailwindcssOptions } = options
-
-  return [{
-    name: 'myoschen/tailwindcss',
-    plugins: {
-      tailwindcss: pluginTailwind as unknown as ESLint.Plugin,
-    },
-    settings: {
-      tailwindcss: {
-        callees: ['cn', 'cva'],
-        config: 'tailwind.config.ts',
-        ...tailwindcssOptions,
+        // custom rules
+        'tailwindcss/no-custom-classname': 'off',
       },
     },
-    rules: {
-      ...pluginTailwind.configs.recommended.rules,
-
-      // custom rules
-      'tailwindcss/no-custom-classname': 'off',
-
-      // override rules
-      ...overrides,
-    },
-  }]
+  ]
 }
