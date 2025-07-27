@@ -1,6 +1,6 @@
 {
   "name": "@myoschen/eslint-config",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "My eslint configurations.",
   "license": "MIT",
   "author": "Myoschen <myos.chen@gmail.com> (https://github.com/Myoschen/)",
